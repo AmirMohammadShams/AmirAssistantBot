@@ -20,7 +20,7 @@ if not GEMINI_API_KEY:
     raise ValueError("No GEMINI_API_KEY found in environment variables. Please check your .env file.")
 
 genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-1.5-pro')
+model = genai.GenerativeModel('gemini-1.5-flash')
 
 # Dictionary to store conversation history per user
 user_conversations = {}
