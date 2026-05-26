@@ -70,7 +70,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 
     except Exception as e:
         logger.error(f"Error communicating with Gemini: {e}")
-        await update.message.reply_text("متاسفانه در ارتباط با هوش مصنوعی خطایی رخ داد. لطفا دوباره تلاش کنید.")
+        await update.message.reply_text(f"متاسفانه در ارتباط با هوش مصنوعی خطایی رخ داد. خطا:\n\n{str(e)}")
 
 def main() -> None:
     """Start the bot."""
