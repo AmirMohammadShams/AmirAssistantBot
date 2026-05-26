@@ -30,7 +30,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     user_id = user.id
     
     # Initialize or reset the chat history for this user
-    user_conversations[user_id] = client.chats.create(model="gemini-2.0-flash")
+    user_conversations[user_id] = client.chats.create(model="gemini-1.5-flash")
     
     welcome_message = (
         f"سلام {user.first_name}! من دستیار هوشمند شما هستم که به هوش مصنوعی Gemini متصل شده‌ام.\n"
@@ -48,7 +48,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 
     # Check if the user has an active chat session, if not create one
     if user_id not in user_conversations:
-        user_conversations[user_id] = client.chats.create(model="gemini-2.0-flash")
+        user_conversations[user_id] = client.chats.create(model="gemini-1.5-flash")
     
     chat_session = user_conversations[user_id]
 
