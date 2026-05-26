@@ -3,7 +3,7 @@ import logging
 from dotenv import load_dotenv
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
-import google.generativeai as genai
+from google import genai
 
 # Load environment variables
 load_dotenv()
@@ -19,8 +19,7 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 if not GEMINI_API_KEY:
     raise ValueError("No GEMINI_API_KEY found in environment variables. Please check your .env file.")
 
-genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-pro')
+client = genai.Client(api_key=GEMINI_API_KEY)
 
 # Dictionary to store conversation history per user
 user_conversations = {}
@@ -31,7 +30,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     user_id = user.id
     
     # Initialize or reset the chat history for this user
-    user_conversations[user_id] = model.start_chat(history=[])
+    user_conversations[user_id] = client.chats.create(model="gemini-2.0-flash")
     
     welcome_message = (
         f"سلام {user.first_name}! من دستیار هوشمند شما هستم که به هوش مصنوعی Gemini متصل شده‌ام.\n"
@@ -49,7 +48,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 
     # Check if the user has an active chat session, if not create one
     if user_id not in user_conversations:
-        user_conversations[user_id] = model.start_chat(history=[])
+        user_conversations[user_id] = client.chats.create(model="gemini-2.0-flash")
     
     chat_session = user_conversations[user_id]
 
