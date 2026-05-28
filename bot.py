@@ -57,7 +57,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 import urllib.parse
 
 async def paint(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Generate an image using Pollinations.ai based on user prompt."""
+    """Generate an image using Gemini Imagen 4.0 based on user prompt."""
     prompt = " ".join(context.args)
     if not prompt:
         await update.message.reply_text("لطفا بعد از دستور /paint توصیف عکسی که می‌خواهید را به انگلیسی بنویسید.\n\nمثال:\n`/paint a futuristic city in Iran`", parse_mode="Markdown")
@@ -66,17 +66,37 @@ async def paint(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     try:
         await context.bot.send_chat_action(chat_id=update.effective_chat.id, action='upload_photo')
         
-        # URL encode the prompt
-        encoded_prompt = urllib.parse.quote(prompt)
-        # We use Pollinations.ai which is free, fast, and does not require paid subscription
-        image_url = f"https://image.pollinations.ai/prompt/{encoded_prompt}?width=1024&height=1024&nologo=true&private=true"
+        # Call Gemini Imagen 4.0 model
+        result = client.models.generate_images(
+            model='imagen-4.0-generate-001',
+            prompt=prompt,
+            config=types.GenerateImagesConfig(
+                number_of_images=1,
+                output_mime_type="image/jpeg",
+                aspect_ratio="1:1"
+            )
+        )
         
-        # Telegram can directly fetch the image from URL and send it
-        await update.message.reply_photo(photo=image_url, caption=f"تصویر تولید شده برای: {prompt}")
+        if not result.generated_images:
+            await update.message.reply_text("متاسفانه تصویری تولید نشد. لطفا دوباره تلاش کنید.")
+            return
+
+        # Send image back
+        img_bytes = result.generated_images[0].image.image_bytes
+        await update.message.reply_photo(photo=io.BytesIO(img_bytes), caption=f"تصویر تولید شده توسط Gemini برای: {prompt}")
 
     except Exception as e:
         logger.error(f"Error generating image: {e}")
-        await update.message.reply_text(f"خطا در تولید تصویر:\n\n{str(e)}")
+        error_msg = str(e)
+        if "paid plans" in error_msg or "upgrade your account" in error_msg:
+            await update.message.reply_text(
+                "❌ **خطای عدم دسترسی:**\n"
+                "گوگل قابلیت تولید تصویر (Imagen) را فقط برای اکانت‌های دارای پرداخت فعال (Paid Plan/Billing) در پنل Google AI Studio باز گذاشته است.\n\n"
+                "برای استفاده از این قابلیت باید کارت اعتباری به پنل گوگل خود اضافه کنید.",
+                parse_mode="Markdown"
+            )
+        else:
+            await update.message.reply_text(f"خطا در تولید تصویر با Gemini:\n\n{error_msg}")
 
 async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Download user photo, pass it to Gemini, and reply."""
