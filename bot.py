@@ -27,13 +27,10 @@ client = genai.Client(api_key=GEMINI_API_KEY)
 # Dictionary to store conversation history per user
 user_conversations = {}
 
-def create_grounded_chat(user_id: int):
-    """Helper to create a Gemini chat session with Google Search grounding."""
+def create_chat(user_id: int):
+    """Helper to create a Gemini chat session."""
     return client.chats.create(
-        model="gemini-3.5-flash",
-        config=types.GenerateContentConfig(
-            tools=[types.Tool(google_search=types.GoogleSearch())]
-        )
+        model="gemini-3.5-flash"
     )
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -42,12 +39,11 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     user_id = user.id
     
     # Initialize or reset the chat history for this user
-    user_conversations[user_id] = create_grounded_chat(user_id)
+    user_conversations[user_id] = create_chat(user_id)
     
     welcome_message = (
         f"سلام {user.first_name}! من دستیار پیشرفته شما هستم. 🚀\n\n"
         "من به هوش مصنوعی Gemini 3.5 متصل شده‌ام و قابلیت‌های زیر را دارم:\n"
-        "🔍 **جستجوی زنده گوگل:** به صورت خودکار اطلاعات بازار طلا، برنامه‌نویسی و اخبار روز را جستجو می‌کنم.\n"
         "🎨 **تولید تصویر:** با دستور /paint و نوشتن توصیف انگلیسی عکس تولید می‌کنم.\n"
         "🖼️ **تحلیل تصویر:** کافیست هر عکسی (اسکرین‌شات کد یا چارت قیمت) را بفرستید تا تحلیل کنم.\n"
         "🎙️ **وویس صوتی:** می‌توانید برای من پیام صوتی بفرستید تا متوجه شوم و پاسخ دهم."
@@ -102,7 +98,7 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     """Download user photo, pass it to Gemini, and reply."""
     user_id = update.effective_user.id
     if user_id not in user_conversations:
-        user_conversations[user_id] = create_grounded_chat(user_id)
+        user_conversations[user_id] = create_chat(user_id)
     chat_session = user_conversations[user_id]
 
     try:
@@ -139,7 +135,7 @@ async def handle_voice(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     """Download voice note, upload to Gemini Files API, and reply."""
     user_id = update.effective_user.id
     if user_id not in user_conversations:
-        user_conversations[user_id] = create_grounded_chat(user_id)
+        user_conversations[user_id] = create_chat(user_id)
     chat_session = user_conversations[user_id]
 
     try:
@@ -183,7 +179,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 
     # Check if the user has an active chat session, if not create one
     if user_id not in user_conversations:
-        user_conversations[user_id] = create_grounded_chat(user_id)
+        user_conversations[user_id] = create_chat(user_id)
     
     chat_session = user_conversations[user_id]
 
