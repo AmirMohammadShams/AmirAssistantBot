@@ -1,7 +1,6 @@
 ccxt
 pandas
 numpy
-pandas-ta
 python-telegram-bot
 python-dotenv
 apscheduler

@@ -1,5 +1,4 @@
 import pandas as pd
-import pandas_ta as ta
 import numpy as np
 from config import config
 
@@ -10,15 +9,21 @@ class StrategyEngine:
 
     def apply_indicators(self, df):
         """Calculates indicators needed for the strategy."""
-        df.ta.rsi(length=self.rsi_length, append=True)
-        df.ta.ema(length=self.ema_length, append=True)
+        # Calculate EMA
+        df['EMA'] = df['close'].ewm(span=self.ema_length, adjust=False).mean()
+
+        # Calculate RSI (Wilder's Smoothing)
+        delta = df['close'].diff()
+        gain = delta.where(delta > 0, 0)
+        loss = -delta.where(delta < 0, 0)
         
-        # Rename standard columns if they exist
-        rename_map = {
-            f'RSI_{self.rsi_length}': 'RSI',
-            f'EMA_{self.ema_length}': 'EMA'
-        }
-        df.rename(columns=rename_map, inplace=True, errors='ignore')
+        # Wilder's exponential smoothing uses alpha = 1 / length
+        avg_gain = gain.ewm(alpha=1/self.rsi_length, adjust=False).mean()
+        avg_loss = loss.ewm(alpha=1/self.rsi_length, adjust=False).mean()
+        
+        rs = avg_gain / avg_loss
+        df['RSI'] = 100 - (100 / (1 + rs))
+        
         return df
 
     def is_swing_low(self, df, index, window=5):
