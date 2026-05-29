@@ -1,4 +1,13 @@
-python-telegram-bot[webhooks]
-google-genai
+ccxt
+pandas
+numpy
+pandas-ta
+python-telegram-bot
 python-dotenv
+apscheduler
+pysocks
+yfinance
+requests
+google-genai
 Pillow
+matplotlib==3.10.9
