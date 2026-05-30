@@ -5,6 +5,7 @@ from config import config
 from exchange_manager import ExchangeManager
 from strategy_engine import StrategyEngine
 import telegram_interface
+import requests
 
 # Configure logging
 logging.basicConfig(
@@ -44,6 +45,24 @@ async def notify_telegram(message, photo_path=None):
         except Exception as e:
             logger.error(f"Failed to send telegram notification to {chat_id}: {e}")
 
+async def notify_log_bot(message):
+    if not config.LOG_BOT_TOKEN or not config.TELEGRAM_CHAT_ID:
+        return
+    url = f"https://api.telegram.org/bot{config.LOG_BOT_TOKEN}/sendMessage"
+    proxies = None
+    if config.HTTP_PROXY:
+        proxies = {'http': config.HTTP_PROXY, 'https': config.HTTP_PROXY}
+    data = {
+        "chat_id": config.TELEGRAM_CHAT_ID,
+        "text": message,
+        "parse_mode": "Markdown"
+    }
+    try:
+        # Run synchronous requests in thread to avoid blocking the event loop
+        await asyncio.to_thread(requests.post, url, data=data, proxies=proxies, timeout=10)
+    except Exception as e:
+        logger.error(f"Failed to send log to log bot: {e}")
+
 async def analyze_timeframe(timeframe):
     logger.info(f"Starting {timeframe} market analysis...")
     
@@ -67,6 +86,7 @@ async def analyze_timeframe(timeframe):
     for p in nobitex_pairs: all_tasks.append((p, 'nobitex'))
     
     logger.info(f"Total symbols to scan for {timeframe}: {len(all_tasks)}")
+    await notify_log_bot(f"🟢 **شروع اسکن بازار**\n⏱ تایم‌فریم: `{timeframe}`\n📊 تعداد نمادها: `{len(all_tasks)}`")
     
     batch_size = 10
     delay_between_batches = 1.0 # 1 second delay between batches to avoid rate limit
@@ -106,10 +126,14 @@ async def analyze_timeframe(timeframe):
                         photo_path=chart_path
                     )
             except Exception as e:
-                logger.error(f"Error processing {symbol}: {e}")
+                err_msg = f"Error processing {symbol}: {e}"
+                logger.error(err_msg)
+                await notify_log_bot(f"🔴 **خطا در پردازش**\n📌 نماد: `{symbol}`\n⚠️ خطا: `{str(e)[:100]}`")
                 
         # Anti-Rate Limit sleep
         await asyncio.sleep(delay_between_batches)
+        
+    await notify_log_bot(f"🏁 **پایان اسکن**\n⏱ تایم‌فریم: `{timeframe}`\nاسکن `{len(all_tasks)}` نماد با موفقیت به اتمام رسید.")
 
 async def setup_scheduler(app):
     logger.info("Setting up scheduler...")

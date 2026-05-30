@@ -8049,3 +8049,311 @@ telegram.error.NetworkError: httpx.ConnectError: All connection attempts failed
 2026-05-29 21:53:42,045 [INFO] Application is stopping. This might take a moment.
 2026-05-29 21:53:42,046 [INFO] Scheduler has been shut down
 2026-05-29 21:53:42,057 [INFO] Application.stop() complete
+2026-05-30 16:13:04,525 [INFO] Initialized Binance in LIVE mode.
+2026-05-30 16:13:04,629 [INFO] Starting Advanced Crypto Divergence Bot...
+2026-05-30 16:13:04,629 [INFO] Starting Telegram interface...
+2026-05-30 16:13:34,656 [ERROR] Network Retry Loop (Bootstrap Initialize Application): Timed out: Timed out. Failed run number 0 of 0. Aborting.
+Traceback (most recent call last):
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpcore/_async/socks_proxy.py", line 295, in handle_async_request
+    raise exc
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpcore/_async/socks_proxy.py", line 266, in handle_async_request
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 279, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 161, in network_retry_loop
+    await do_action()
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 136, in do_action
+    await action_cb()
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/ext/_application.py", line 489, in initialize
+    await self.bot.initialize()
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 316, in initialize
+    await super().initialize()
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/_bot.py", line 857, in initialize
+    await self.get_me()
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 2008, in get_me
+    return await super().get_me(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/_bot.py", line 990, in get_me
+    result = await self._post(
+             ^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/_bot.py", line 704, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/_bot.py", line 733, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 198, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 305, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 296, in do_request
+    raise TimedOut from err
+telegram.error.TimedOut: Timed out
+2026-05-30 16:13:42,016 [INFO] Initialized Binance in LIVE mode.
+2026-05-30 16:13:42,093 [INFO] Starting Advanced Crypto Divergence Bot...
+2026-05-30 16:13:42,093 [INFO] Starting Telegram interface...
+2026-05-30 16:13:43,874 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getMe "HTTP/1.1 200 OK"
+2026-05-30 16:13:43,875 [INFO] Setting up scheduler...
+2026-05-30 16:13:43,882 [INFO] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-05-30 16:13:43,883 [INFO] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-05-30 16:13:43,883 [INFO] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-05-30 16:13:43,884 [INFO] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-05-30 16:13:43,884 [INFO] Added job "analyze_timeframe" to job store "default"
+2026-05-30 16:13:43,884 [INFO] Added job "analyze_timeframe" to job store "default"
+2026-05-30 16:13:43,884 [INFO] Added job "analyze_timeframe" to job store "default"
+2026-05-30 16:13:43,885 [INFO] Added job "analyze_timeframe" to job store "default"
+2026-05-30 16:13:43,885 [INFO] Scheduler started
+2026-05-30 16:13:43,885 [INFO] Starting 1h market analysis...
+2026-05-30 16:14:09,614 [ERROR] Error fetching futures symbols: binance GET https://fapi.binance.com/fapi/v1/exchangeInfo
+2026-05-30 16:14:09,615 [INFO] Total symbols to scan for 1h: 10
+2026-05-30 16:14:26,197 [ERROR] Error fetching data for BTC/USDT (crypto): binance GET https://fapi.binance.com/fapi/v1/exchangeInfo
+2026-05-30 16:14:57,715 [ERROR] Error fetching data for USDTIRT (nobitex): HTTPSConnectionPool(host='api.nobitex.ir', port=443): Max retries exceeded with url: /market/udf/history?symbol=USDTIRT&resolution=60&from=1779209097&to=1780145097 (Caused by NameResolutionError("HTTPSConnection(host='api.nobitex.ir', port=443): Failed to resolve 'api.nobitex.ir' ([Errno 8] nodename nor servname provided, or not known)"))
+2026-05-30 16:15:01,081 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/deleteWebhook "HTTP/1.1 200 OK"
+2026-05-30 16:15:01,084 [INFO] Scheduler started
+2026-05-30 16:15:01,084 [INFO] Application started
+2026-05-30 16:15:13,178 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:15:25,026 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:15:35,605 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:15:46,098 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:15:56,638 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:16:07,181 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:16:17,684 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:16:28,216 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:16:35,115 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:16:36,630 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/sendMessage "HTTP/1.1 200 OK"
+2026-05-30 16:16:45,665 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:16:56,194 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:17:06,704 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:17:17,191 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:17:27,748 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:17:38,334 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:17:48,907 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:17:59,496 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:18:10,019 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:18:21,166 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:18:31,765 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:18:42,284 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:18:52,763 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:19:03,334 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:19:13,866 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:19:24,823 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:19:35,399 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:19:46,041 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:19:56,584 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:20:07,182 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:20:17,674 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:20:28,168 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:20:38,674 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:20:49,141 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:20:59,628 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:21:10,092 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:21:20,566 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:21:31,016 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:21:41,506 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:21:52,032 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:22:02,592 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:22:13,101 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:22:23,598 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:22:33,986 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:22:44,418 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:22:55,126 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:23:05,613 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:23:15,741 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:23:20,844 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:23:20,845 [INFO] Application is stopping. This might take a moment.
+2026-05-30 16:23:20,846 [INFO] Scheduler has been shut down
+2026-05-30 16:23:20,857 [INFO] Application.stop() complete
+2026-05-30 16:24:23,411 [INFO] Initialized Binance in LIVE mode.
+2026-05-30 16:24:23,483 [INFO] Starting Advanced Crypto Divergence Bot...
+2026-05-30 16:24:23,483 [INFO] Starting Telegram interface...
+2026-05-30 16:24:25,314 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getMe "HTTP/1.1 200 OK"
+2026-05-30 16:24:25,315 [INFO] Setting up scheduler...
+2026-05-30 16:24:25,322 [INFO] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-05-30 16:24:25,322 [INFO] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-05-30 16:24:25,322 [INFO] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-05-30 16:24:25,322 [INFO] Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-05-30 16:24:25,323 [INFO] Added job "analyze_timeframe" to job store "default"
+2026-05-30 16:24:25,323 [INFO] Added job "analyze_timeframe" to job store "default"
+2026-05-30 16:24:25,323 [INFO] Added job "analyze_timeframe" to job store "default"
+2026-05-30 16:24:25,323 [INFO] Added job "analyze_timeframe" to job store "default"
+2026-05-30 16:24:25,323 [INFO] Scheduler started
+2026-05-30 16:24:25,323 [INFO] Starting 1h market analysis...
+2026-05-30 16:24:35,350 [ERROR] Error fetching futures symbols: binance GET https://api.binance.com/api/v3/exchangeInfo
+2026-05-30 16:24:35,351 [INFO] Total symbols to scan for 1h: 10
+2026-05-30 16:24:36,864 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/deleteWebhook "HTTP/1.1 200 OK"
+2026-05-30 16:24:36,866 [INFO] Scheduler started
+2026-05-30 16:24:36,866 [INFO] Application started
+2026-05-30 16:25:07,031 [ERROR] Error fetching data for USDTIRT (nobitex): HTTPSConnectionPool(host='api.nobitex.ir', port=443): Max retries exceeded with url: /market/udf/history?symbol=USDTIRT&resolution=60&from=1779209706&to=1780145706 (Caused by NameResolutionError("HTTPSConnection(host='api.nobitex.ir', port=443): Failed to resolve 'api.nobitex.ir' ([Errno 8] nodename nor servname provided, or not known)"))
+2026-05-30 16:25:07,032 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:25:17,584 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:25:28,262 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:25:38,779 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:25:49,291 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:25:59,799 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:26:10,299 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:26:20,799 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:26:31,317 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:26:41,939 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:26:52,555 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:27:03,027 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:27:13,476 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:27:24,098 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:27:34,546 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:27:44,979 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:28:11,557 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:28:22,539 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:28:33,381 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:28:43,819 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:28:54,562 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:29:05,077 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:29:15,498 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:29:26,035 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:29:36,473 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:29:46,853 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:29:57,320 [INFO] HTTP Request: POST https://api.telegram.org/bot8793721062:AAFYgY2Th4tkAWIzxtCAnPmnjXnR9JW8n7Y/getUpdates "HTTP/1.1 200 OK"
+2026-05-30 16:30:02,246 [ERROR] No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpcore/_async/socks_proxy.py", line 299, in handle_async_request
+    return await self._connection.handle_async_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpcore/_async/http11.py", line 136, in handle_async_request
+    raise exc
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpcore/_async/http11.py", line 106, in handle_async_request
+    ) = await self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpcore/_async/http11.py", line 177, in _receive_response_headers
+    event = await self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpcore/_async/http11.py", line 231, in _receive_event
+    raise RemoteProtocolError(msg)
+httpcore.RemoteProtocolError: Server disconnected without sending a response.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 279, in do_request
+    res = await self._client.request(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.RemoteProtocolError: Server disconnected without sending a response.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 161, in network_retry_loop
+    await do_action()
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/ext/_utils/networkloop.py", line 154, in do_action
+    action_cb_task.result()
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/ext/_updater.py", line 340, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 672, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/_bot.py", line 4865, in get_updates
+    await self._post(
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/_bot.py", line 704, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/ext/_extbot.py", line 370, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/_bot.py", line 733, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 198, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/request/_baserequest.py", line 305, in _request_wrapper
+    code, payload = await self.do_request(
+                    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/amirmohammadshams/Desktop/Apps/crypto_divergence_bot/venv/lib/python3.12/site-packages/telegram/request/_httpxrequest.py", line 303, in do_request
+    raise NetworkError(f"httpx.{err.__class__.__name__}: {err}") from err
+telegram.error.NetworkError: httpx.RemoteProtocolError: Server disconnected without sending a response.

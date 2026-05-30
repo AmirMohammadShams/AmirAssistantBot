@@ -29,6 +29,7 @@ class Config:
     USE_EMA_FILTER = os.getenv('USE_EMA_FILTER', 'true').lower() == 'true'
     
     TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN', '')
+    LOG_BOT_TOKEN = os.getenv('LOG_BOT_TOKEN', '')
     TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID', '')
     GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', '')
     
